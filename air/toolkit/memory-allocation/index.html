@@ -1,0 +1,57 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="chrome=1"/><title>理解内存分配: 全栈开发之旅</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/><meta name="author" content="ronesam"/><meta name="description" content="原始值 和 引用值  栈 和 堆  理解内存分配理解Javascript_01_理解内存分配">
+<meta property="og:type" content="article">
+<meta property="og:title" content="理解内存分配">
+<meta property="og:url" content="https://ronesam.com/air/toolkit/memory-allocation/index.html">
+<meta property="og:site_name" content="全栈开发之旅">
+<meta property="og:description" content="原始值 和 引用值  栈 和 堆  理解内存分配理解Javascript_01_理解内存分配">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-10-24T07:34:20.803Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="理解内存分配">
+<meta name="twitter:description" content="原始值 和 引用值  栈 和 堆  理解内存分配理解Javascript_01_理解内存分配"><link rel="icon" type="image/x-icon" href="/zero/img/favicon.ico"/><link rel="stylesheet" href="/vendor/bootstrap/3.3.5/css/bootstrap.min.css"><link rel="stylesheet" href="/vendor/font-awesome/4.4.0/css/font-awesome.min.css"><link rel="stylesheet" href="/vendor/remodal/1.0.5/remodal.min.css"><link rel="stylesheet" href="/vendor/remodal/1.0.5/remodal-default-theme.min.css"><!--如果文章中有图片（除画廊外），则载入fancybox特效相关样式--><link rel="stylesheet" href="/vendor/fancybox/2.1.5/jquery.fancybox.min.css"><link rel="stylesheet" href="/zero/css/style.css"><script src="/vendor/jquery/2.1.4/jquery.min.js"></script></head><body><div class="wrapper"><header id="header"><div class="title"><h1><a href="/">全栈开发之旅</a></h1><p class="fa fa-github-alt"><a href="/about/summary/" target="_blank">知行合一, 学以致用</a></p></div><nav class="nav"><ul><li><a href="/air/summary/">交互层</a></li><li><a href="/fire/summary/">业务层</a></li><li><a href="/water/summary/">服务层</a></li><li><a href="/earth/summary/">事务层</a></li></ul><div class="clearfix"></div></nav><div class="clearfix"></div></header><div class="content"><article class="post"><header><div class="icon"></div><a href="/air/toolkit/memory-allocation/"><time datetime="2016-01-05T05:43:30.000Z">2016-01-05</time></a><h1 class="title">理解内存分配</h1></header><div class="entry"><blockquote><ul>
+<li><strong>原始值</strong> 和 <strong>引用值</strong> </li>
+<li><strong>栈</strong> 和 <strong>堆</strong></li>
+</ul>
+<footer><strong>理解内存分配</strong><cite><a href="http://www.cnblogs.com/fool/archive/2010/10/07/1845226.html" target="_blank" rel="external">理解Javascript_01_理解内存分配</a></cite></footer></blockquote>
+<a id="more"></a>
+<h2 id="原始值-和-引用值"><a href="#原始值-和-引用值" class="headerlink" title="原始值 和 引用值"></a><strong>原始值</strong> 和 <strong>引用值</strong></h2><p>在<code>ECMAScript</code>中，变量可以存放两种类型的值，即 <strong>原始值</strong> 和 <strong>引用值</strong>。</p>
+<p><strong>原始值</strong> 指的就是代表原始数据类型（基本数据类型）的值，即<code>Undefined，Null，Number，String，Boolean</code>类型所表示的值。</p>
+<p><strong>引用值</strong> 指的就是复合数据类型的值，即<code>Object</code>（包括Function，Array，以及自定义对象等等）。</p>
+<h2 id="栈-和-堆"><a href="#栈-和-堆" class="headerlink" title="栈 和 堆"></a><strong>栈</strong> 和 <strong>堆</strong></h2><p>与 <strong>原始值</strong> 和 <strong>引用值</strong> 对应存在两种结构的内存即 <strong>栈</strong> 和 <strong>堆</strong> 。</p>
+<p><strong>栈</strong> 是一种后进先出的数据结构，在javascript中可以通过Array来模拟 <strong>栈</strong> 的行为。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = []; <span class="comment">//创建一个 **栈** </span></div><div class="line">arr.push(<span class="string">"apple"</span>);<span class="comment">//压入元素"apple" ["apple"]</span></div><div class="line">arr.push(<span class="string">"orange"</span>);<span class="comment">//压入元素"orange"   ["apple"，"orange"]</span></div><div class="line">arr.pop();<span class="comment">//弹出"orange"      ["apple"]</span></div><div class="line">arr.push(<span class="string">"banana"</span>);<span class="comment">//压入元素"banana"   ["apple"，"banana"]</span></div></pre></td></tr></table></figure>
+<p>我们来看一下，与之对应的内存图：</p>
+<figure class="highlight plain"><figcaption><span>air/js-understanding/1-1.png alt:栈的内存图```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">**原始值** 是存储在 **栈** 中的简单数据段，也就是说，他们的值直接存储在变量访问的位置。</div><div class="line"></div><div class="line">**堆** 是存放数据的基于散列算法的数据结构，在javascript中，**引用值** 是存放在 **堆** 中的。</div><div class="line"></div><div class="line">**引用值** 是存储在 **堆** 中的对象，也就是说，存储在变量处的值（即指向对象的变量，存储在 **栈** 中）是一个指针，指向存储在 **堆** 中的实际对象。</div><div class="line"></div><div class="line">例：</div><div class="line"></div><div class="line">&gt; var obj = new Object();</div><div class="line"></div><div class="line">`obj`存储在 **栈** 中。它指向于`new Object()`这个对象，而`new Object()`是存放在 **堆** 中的。</div><div class="line"></div><div class="line">那为什么 **引用值** 要放在 **堆** 中，而 **原始值** 要放在 **栈** 中，不都是在内存中吗，为什么不放在一起呢？那接下来，让我们来探索问题的答案！</div><div class="line"></div><div class="line">首先，我们来看一下代码：</div><div class="line"></div><div class="line">```js</div><div class="line">function Person(id，name，age)&#123;</div><div class="line">    this.id = id;</div><div class="line">    this.name = name;</div><div class="line">    this.age = age;</div><div class="line">&#125;</div><div class="line"> </div><div class="line">var num = 10;</div><div class="line">var bol = true;</div><div class="line">var str = &quot;abc&quot;;</div><div class="line">var obj = new Object();</div><div class="line">var arr = [&apos;a&apos;，&apos;b&apos;，&apos;c&apos;];</div><div class="line">var person = new Person(100，&quot;笨蛋的座右铭&quot;，25);</div></pre></td></tr></table></figure>
+<p>然后我们来看一下内存分析图：</p>
+<p><code>qnimg air/js-understanding/1-2.png alt:内存分析图</code></p>
+<p>变量<code>num，bol，str</code>为基本数据类型，它们的值，直接存放在 <strong>栈</strong> 中，<code>obj，person，arr</code>为复合数据类型，他们的引用变量存储在 <strong>栈</strong> 中，指向于存储在 <strong>堆</strong> 中的实际对象。</p>
+<p>由上图可知，我们无法直接操纵 <strong>堆</strong> 中的数据，也就是说我们无法直接操纵对象，但我们可以通过 <strong>栈</strong> 中对对象的引用来操作对象，就像我们通过遥控机操作电视机一样，区别在于这个电视机本身并没有控制按钮。</p>
+<p>现在让我们来回答为什么 <strong>引用值</strong> 要放在 <strong>堆</strong> 中，而 <strong>原始值</strong> 要放在 <strong>栈</strong> 中的问题：</p>
+<p>记住一句话：能量是守衡的，无非是时间换空间，空间换时间的问题。</p>
+<ul>
+<li><strong>堆</strong> 比 <strong>栈</strong> 大</li>
+<li><strong>栈</strong> 比 <strong>堆</strong> 的运算速度快</li>
+</ul>
+<p>对象是一个复杂的结构，并且可以自由扩展，如：数组可以无限扩充，对象可以自由添加属性，将它们放在 <strong>堆</strong> 中，通过引用的方式查找到 <strong>堆</strong> 中的实际对象再进行操作，是为了不影响 <strong>栈</strong> 的效率。</p>
+<p>相对于复合数据类型而言，简单数据类型就比较稳定，并且它只占据很小的内存。</p>
+<p>不将简单数据类型放在 <strong>堆</strong> 是因为：</p>
+<p>通过引用到 <strong>堆</strong> 中查找实际对象是要花费时间的，而这个综合成本远大于直接从 <strong>栈</strong> 中取得实际值的成本。</p>
+<p>所以简单数据类型的值直接存放在 <strong>栈</strong> 中。</p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>程序很简单，但它是一切的根本，基础是最重要的，因为摩天大厦也是一块砖一块瓦的搭建起来的。</p>
+<p>内存是程序执行的根本，搞懂了内存，就等于搞懂了一切。</p>
+<p>心血之作，鼓励一下自已，加油！</p>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p>JavaScript高级程序设计</p>
+</div><footer><div class="shares fa fa-weixin"><a>分享到微信</a></div></footer><div class="clearfix"></div></article><aside><ul class="action">   <li title="回到顶部" class="icon-arrow-up"> </li><li title="索引" data-remodal-target="toc" class="icon-toc"></li><li title="评论" data-remodal-target="comment" class="icon-comment"></li><li title="全屏" class="icon-fullscreen"></li></ul><ul class="page"> <li class="icon-prev"></li><li title="目录" data-remodal-target="summary" class="icon-summary"></li><li class="icon-next"></li></ul></aside><div data-remodal-id="toc" data-remodal-options="hashTracking: false" class="remodal"><button data-remodal-action="close" class="remodal-close"></button><h3>索引</h3><article class="toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#原始值-和-引用值"><span class="toc-number">1.</span> <span class="toc-text">原始值 和 引用值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#栈-和-堆"><span class="toc-number">2.</span> <span class="toc-text">栈 和 堆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结："><span class="toc-number">3.</span> <span class="toc-text">总结：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考："><span class="toc-number">4.</span> <span class="toc-text">参考：</span></a></li></ol></article></div><div data-remodal-id="summary" data-remodal-options="hashTracking: false" class="remodal"><button data-remodal-action="close" class="remodal-close"></button><h3>目录</h3><article class="summary"></article></div><div data-remodal-id="comment" data-remodal-options="hashTracking: false" class="remodal"><button data-remodal-action="close" class="remodal-close"></button><h3>评论</h3><article class="comment"><div data-thread-key="ronesam" data-title="理解内存分配" data-url="/air/toolkit/memory-allocation/" class="ds-thread"></div></article></div></div></div><footer id="footer"><div class="copyright">&copy; 2017 <a href="/">ronesam</a></div><div class="theme-copyright">Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>  | Redesign by <a href="https://ronesam.com/about/summary/" target="_blank">ronesam</a></div><div class="clearfix"></div></footer><script src="/vendor/remodal/1.0.5/remodal.min.js"></script><script src="/vendor/screenfull.js/2.0.0/screenfull.min.js"></script><!--需要先载入全屏的函数，aside里面会重写，加入回调--><script src="/zero/js/aside.js"></script><script>var duoshuoQuery = {short_name: 'ronesam'};</script><!--如果文章中有图片（除画廊外），则载入fancybox特效相关代码--><script src="/vendor/fancybox/2.1.5/jquery.fancybox.min.js"></script><script>//给所有的图片打上标识，供fancybox（除了明确表示非fancybox）调用
+$('.entry').each(function(i) {
+  $(this).find('img:not([class*="no-fancybox"])').each(function () {
+    var alt = this.alt;
+    if(alt) {
+      $(this).after('<span class="caption">' + alt + '</span>');
+    }
+    if($(this).parent('a').length === 0) {
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery' + i + '" />');
+    }
+  });
+});
+//启动fancybox
+$('.fancybox').fancybox();</script></body></html>
