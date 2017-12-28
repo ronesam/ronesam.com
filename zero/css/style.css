@@ -512,12 +512,12 @@ dl dl li:before {
 }
 article.post ol li,
 article.post ul li {
-  margin: 0 2em 1em;
+  margin: 1em 2em 0;
 }
 @media screen and (max-width: 1024px) {
   article.post ol li,
   article.post ul li {
-    margin: 0 1em 1em;
+    margin: 1em 1em 0;
   }
 }
 article.post ol li:before,
