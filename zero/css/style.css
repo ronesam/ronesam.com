@@ -357,6 +357,9 @@ article .entry h2 {
 article .entry h3 {
   font-size: 1.2em;
 }
+article .entry h4 {
+  font-size: 1em;
+}
 article .entry h3,
 article .entry h4,
 article .entry h5,
