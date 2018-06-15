@@ -21,9 +21,6 @@ $(function() {
   if ('' === toc.html()) {
     $('.icon-toc').hide();
   }
-  $(document).on('opening', '[data-remodal-id=comment]', function() {
-    $.getScript('//static.duoshuo.com/embed.js');
-  });
   full = $('.icon-fullscreen');
   full.click(function(e) {
     screenfull.toggle('', function(isFullscreen) {

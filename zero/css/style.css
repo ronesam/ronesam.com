@@ -569,7 +569,6 @@ article .entry blockquote footer cite:before,
 article.summary blockquote footer cite:before,
 article.toc blockquote footer cite:before {
   content: '《';
-  padding-left: 1em;
 }
 article .entry blockquote footer cite:after,
 article.summary blockquote footer cite:after,
