@@ -753,6 +753,9 @@ aside ul li.icon-next a:before {
   font-size: 0.8em;
   margin-top: 10px;
 }
+.remodal article div {
+  text-align: left;
+}
 #pagination {
   margin-top: 20px;
   padding-bottom: 20px;
