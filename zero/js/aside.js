@@ -21,16 +21,6 @@ $(function() {
   if ('' === toc.html()) {
     $('.icon-toc').hide();
   }
-  full = $('.icon-fullscreen');
-  full.click(function(e) {
-    screenfull.toggle('', function(isFullscreen) {
-      if (!isFullscreen) {
-        full.attr('title', '全屏').addClass('icon-fullscreen').removeClass('icon-screenshot');
-      } else {
-        full.attr('title', '取消全屏').addClass('icon-screenshot').removeClass('icon-fullscreen');
-      }
-    });
-  });
   $(function() {
     var arr_path, arr_url, path, url;
     path = window.location.pathname;
@@ -59,13 +49,3 @@ $(function() {
     });
   });
 });
-
-screenfull.toggle = function(elem, fn) {
-  if (this.isFullscreen) {
-    this.exit();
-    fn(false);
-  } else {
-    this.request(elem);
-    fn(true);
-  }
-};
