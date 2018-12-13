@@ -75,16 +75,7 @@ i.fa:before {
   margin-right: 0;
 }
 code {
-  background: #777 none repeat scroll 0% 0%;
-  margin: 0 3px;
-  padding: 2px 6px;
-  border-radius: 4px;
-  -webkit-box-shadow: 0px 1px 3px #000 inset;
-  box-shadow: 0px 1px 3px #000 inset;
-  color: #fff;
-  text-shadow: 0px 1px 1px #000;
-  font-size: 0.9em;
-  font-family: Monaco, Courier New, Courier, monospace;
+  background: transparent;
 }
 #header {
   border-radius: 8px 8px 0 0;
@@ -515,7 +506,7 @@ dl dl li:before {
 }
 article.post ol li,
 article.post ul li {
-  margin: 1em 2em 0;
+  margin: 1em 0 0 1em;
 }
 @media screen and (max-width: 1024px) {
   article.post ol li,
