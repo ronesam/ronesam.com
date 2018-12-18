@@ -9,7 +9,7 @@
 <meta property="og:image" content="https://ronesam.com/work/git/rebase/2.png">
 <meta property="og:image" content="https://ronesam.com/work/git/rebase/3.png">
 <meta property="og:image" content="https://ronesam.com/work/git/rebase/4.png">
-<meta property="og:updated_time" content="2018-12-14T01:41:27.616Z">
+<meta property="og:updated_time" content="2018-12-14T01:52:19.736Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简单对比git pull和git pull --rebase的使用">
 <meta name="twitter:description" content="使用下面的关系区别这两个操作：git pull = git fetch + git mergegit pull –rebase = git fetch + git rebase 散尽浮华简单对比git pull和git pull --rebase的使用">
@@ -26,7 +26,6 @@
 <h2 id="git-merge"><a href="#git-merge" class="headerlink" title="git merge"></a><code>git merge</code></h2><p>用<code>git pull</code>命令把<code>origin</code>分支上的修改<code>pull</code>下来与本地提交合并（<code>merge</code>）成版本<code>M</code>，但这样会形成图中的菱形，让人很困惑。</p>
 <p><img src="3.png" alt="merge"></p>
 <h2 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a><code>git rebase</code></h2><p>创建一个新的提交<code>R</code>，<code>R</code>的文件内容和上面<code>M</code>的一样，但我们将<code>E</code>提交废除，当它不存在（图中用虚线表示）。</p>
-<p>由于这种删除，小李不应该<code>push</code>其他的<code>repository</code>。</p>
 <p><code>rebase</code>的好处是避免了菱形的产生，保持提交曲线为直线，让大家易于理解。</p>
 <p><img src="4.png" alt="rebase"></p>
 <ul>

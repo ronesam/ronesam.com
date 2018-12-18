@@ -5,7 +5,7 @@
 <meta property="og:site_name" content="全栈开发之旅">
 <meta property="og:description" content="基于Git的工作流">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-14T01:28:09.158Z">
+<meta property="og:updated_time" content="2018-12-18T06:59:27.156Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git工作流">
 <meta name="twitter:description" content="基于Git的工作流"><link rel="icon" type="image/x-icon" href="/zero/img/favicon.ico"/><link rel="stylesheet" href="/vendor/bootstrap/3.3.5/css/bootstrap.min.css"><link rel="stylesheet" href="/vendor/font-awesome/4.4.0/css/font-awesome.min.css"><link rel="stylesheet" href="/vendor/remodal/1.0.5/remodal.min.css"><link rel="stylesheet" href="/vendor/remodal/1.0.5/remodal-default-theme.min.css"><link rel="stylesheet" href="/vendor/gitment/0.0.3/default.css"><link rel="stylesheet" href="/zero/css/style.css"><script src="/vendor/jquery/2.1.4/jquery.min.js"></script></head><body><div class="wrapper"><header id="header"><div class="title"><h1><a href="/">全栈开发之旅</a></h1><p class="fa fa-angellist"><a href="/">学以致用, 刻意练习, 知行合一</a></p></div><nav class="nav"><ul><li><a href="/work/summary/">Work</a></li><li><a href="/think/summary/">Think</a></li><li><a href="/about/summary/">关于</a></li></ul><div class="clearfix"></div></nav><div class="clearfix"></div></header><div class="content"><article class="post"><header><div class="icon"></div><a href="/work/git/workflow/"><time datetime="2018-12-12T06:54:27.000Z">2018-12-12</time></a><h1 class="title">Git工作流</h1></header><div class="entry"><blockquote><p>基于Git的工作流</p>
@@ -53,7 +53,58 @@
 <li>拉取远程分支 <code>git pull --rebase origin product/feature</code></li>
 <li>2-5. 同新需求流程</li>
 </ol>
-</div><footer><div class="shares fa fa-github-alt"><a href="https://dev.tencent.com/u/ronesam" target="_blank">Hosted by Coding Pages</a></div></footer><div class="clearfix"></div></article><aside><ul class="action">   <li title="回到顶部" class="icon-arrow-up"> </li><li title="索引" data-remodal-target="toc" class="icon-toc"></li><li title="评论" data-remodal-target="comment" class="icon-comment"></li></ul><ul class="page"> <li class="icon-prev"></li><li title="目录" data-remodal-target="summary" class="icon-summary"></li><li class="icon-next"></li></ul></aside><div data-remodal-id="toc" data-remodal-options="hashTracking: false" class="remodal"><button data-remodal-action="close" class="remodal-close"></button><h3>索引</h3><article class="toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#版本一：master-features-模式"><span class="toc-number">1.</span> <span class="toc-text">版本一：master - features 模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#分支介绍"><span class="toc-number">1.1.</span> <span class="toc-text">分支介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Workflow"><span class="toc-number">1.2.</span> <span class="toc-text">Workflow</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#日常开发流程"><span class="toc-number">1.2.1.</span> <span class="toc-text">日常开发流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#新需求开发流程"><span class="toc-number">1.2.2.</span> <span class="toc-text">新需求开发流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#协作开发流程"><span class="toc-number">1.2.3.</span> <span class="toc-text">协作开发流程</span></a></li></ol></li></ol></li></ol></article></div><div data-remodal-id="summary" data-remodal-options="hashTracking: false" class="remodal"><button data-remodal-action="close" class="remodal-close"></button><h3>目录</h3><article class="summary"></article></div><div data-remodal-id="comment" data-remodal-options="hashTracking: false" class="remodal"><button data-remodal-action="close" class="remodal-close"></button><h3>评论</h3><article id="comment"></article></div></div></div><footer id="footer"><div class="copyright"><span>&copy; 2015-2018</span><a href="https://dev.tencent.com/u/ronesam"> ronesam</a></div><div class="theme-copyright"><span>Theme by</span><a href="https://github.com/orderedlist/modernist" target="_blank"> orderedlist</a><span> | Redesign by</span><a href="https://dev.tencent.com/u/ronesam"> ronesam</a></div><div class="clearfix"></div></footer><script src="/vendor/remodal/1.0.5/remodal.min.js"></script><!-- 需要先载入全屏的函数，aside里面会重写，加入回调--><script src="/zero/js/aside.js"></script><!-- 载入评论--><script src="/vendor/gitment/0.0.3/gitment.browser.js"></script><script>var gitment = new Gitment({
+<hr>
+<h1 id="版本二：master-beta-dev-features-模式"><a href="#版本二：master-beta-dev-features-模式" class="headerlink" title="版本二：master - beta - dev - features 模式"></a>版本二：<code>master - beta - dev - features</code> 模式</h1><blockquote>
+<p>版本二和版本一的最大区别在于：版本一仅做代码管理，不负责发布代码到各个环境；版本二则将代码管理和发布合为一体，即合并分支 = 发布（利用钩子实现）</p>
+</blockquote>
+<h2 id="分支介绍-1"><a href="#分支介绍-1" class="headerlink" title="分支介绍"></a>分支介绍</h2><ul>
+<li><code>master</code>：主分支，用于生产环境</li>
+<li><code>beta</code>：测试分支，用于测试环境</li>
+<li><code>dev</code>：开发分支，用于开发环境</li>
+<li><code>features</code>：功能特性分支</li>
+<li><h2 id="Workflow-1"><a href="#Workflow-1" class="headerlink" title="Workflow"></a>Workflow</h2></li>
+<li><code>git pull --rebase origin master</code>——拉取远程<code>master</code>分支</li>
+<li>新建本地分支<code>product/feature</code>：<code>git checkout -b product/feature</code><ul>
+<li>本地分支视情况看是否需要提交远程</li>
+</ul>
+</li>
+<li>切换分支至<code>dev</code>并合并<code>product/feature</code>分支<ul>
+<li><code>git checkout dev</code>——切换到<code>dev</code>分支</li>
+<li><code>git merge product/feature</code>——合并分支<ul>
+<li>如遇代码冲突，解决冲突后执行<code>git merge --continue</code></li>
+</ul>
+</li>
+<li><code>git push origin dev</code>——推送到远程仓库</li>
+<li>开发环境会自动拉取代码并重启，检查功能是否正常</li>
+</ul>
+</li>
+<li>切换分支至<code>beta</code>并合并<code>product/feature</code>分支<ul>
+<li><code>git checkout beta</code>——切换到<code>dev</code>分支</li>
+<li><code>git merge product/feature</code>——合并分支<ul>
+<li>如遇代码冲突，解决冲突后执行<code>git merge --continue</code></li>
+</ul>
+</li>
+<li><code>git push origin beta</code>——推送到远程仓库</li>
+<li>测试环境会自动拉取代码并重启，检查功能是否正常</li>
+</ul>
+</li>
+<li>切换分支至<code>master</code>并合并<code>product/feature</code>分支<ul>
+<li><code>git checkout master</code>——切换到<code>dev</code>分支</li>
+<li><code>git merge product/feature</code>——合并分支<ul>
+<li>如遇代码冲突，解决冲突后执行<code>git merge --continue</code></li>
+</ul>
+</li>
+<li><code>git push origin master</code>——推送到远程仓库</li>
+<li>测试环境会自动拉取代码，然后同步到线上集群服务器并重启，检查功能是否正常</li>
+</ul>
+</li>
+<li>删除本地分支<ul>
+<li><code>git branch -d product/feature</code>——删除功能分支</li>
+<li><code>git push origin :product/feature</code>——删除远程功能分支（如果有的话）</li>
+</ul>
+</li>
+</ul>
+</div><footer><div class="shares fa fa-github-alt"><a href="https://dev.tencent.com/u/ronesam" target="_blank">Hosted by Coding Pages</a></div></footer><div class="clearfix"></div></article><aside><ul class="action">   <li title="回到顶部" class="icon-arrow-up"> </li><li title="索引" data-remodal-target="toc" class="icon-toc"></li><li title="评论" data-remodal-target="comment" class="icon-comment"></li></ul><ul class="page"> <li class="icon-prev"></li><li title="目录" data-remodal-target="summary" class="icon-summary"></li><li class="icon-next"></li></ul></aside><div data-remodal-id="toc" data-remodal-options="hashTracking: false" class="remodal"><button data-remodal-action="close" class="remodal-close"></button><h3>索引</h3><article class="toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#版本一：master-features-模式"><span class="toc-number">1.</span> <span class="toc-text">版本一：master - features 模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#分支介绍"><span class="toc-number">1.1.</span> <span class="toc-text">分支介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Workflow"><span class="toc-number">1.2.</span> <span class="toc-text">Workflow</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#日常开发流程"><span class="toc-number">1.2.1.</span> <span class="toc-text">日常开发流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#新需求开发流程"><span class="toc-number">1.2.2.</span> <span class="toc-text">新需求开发流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#协作开发流程"><span class="toc-number">1.2.3.</span> <span class="toc-text">协作开发流程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#版本二：master-beta-dev-features-模式"><span class="toc-number">2.</span> <span class="toc-text">版本二：master - beta - dev - features 模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#分支介绍-1"><span class="toc-number">2.1.</span> <span class="toc-text">分支介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Workflow-1"><span class="toc-number">2.2.</span> <span class="toc-text">Workflow</span></a></li></ol></li></ol></article></div><div data-remodal-id="summary" data-remodal-options="hashTracking: false" class="remodal"><button data-remodal-action="close" class="remodal-close"></button><h3>目录</h3><article class="summary"></article></div><div data-remodal-id="comment" data-remodal-options="hashTracking: false" class="remodal"><button data-remodal-action="close" class="remodal-close"></button><h3>评论</h3><article id="comment"></article></div></div></div><footer id="footer"><div class="copyright"><span>&copy; 2015-2018</span><a href="https://dev.tencent.com/u/ronesam"> ronesam</a></div><div class="theme-copyright"><span>Theme by</span><a href="https://github.com/orderedlist/modernist" target="_blank"> orderedlist</a><span> | Redesign by</span><a href="https://dev.tencent.com/u/ronesam"> ronesam</a></div><div class="clearfix"></div></footer><script src="/vendor/remodal/1.0.5/remodal.min.js"></script><!-- 需要先载入全屏的函数，aside里面会重写，加入回调--><script src="/zero/js/aside.js"></script><!-- 载入评论--><script src="/vendor/gitment/0.0.3/gitment.browser.js"></script><script>var gitment = new Gitment({
   owner: 'ronesam',
   repo: 'ronesam.com',
   oauth: {
