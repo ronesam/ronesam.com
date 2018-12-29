@@ -1,19 +1,23 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="chrome=1"/><title>简单对比git pull和git pull --rebase的使用</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/><meta name="author" content="ronesam"/><meta name="description" content="使用下面的关系区别这两个操作：git pull = git fetch + git mergegit pull –rebase = git fetch + git rebase 散尽浮华简单对比git pull和git pull --rebase的使用">
+<!DOCTYPE html><html><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="chrome=1"/><title>简单对比git pull和git pull --rebase的使用</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/><meta name="author" content="ronesam"/><meta name="description" content="使用下面的关系区别这两个操作：  git pull = git fetch + git merge git pull –rebase = git fetch + git rebase  散尽浮华简单对比git pull和git pull --rebase的使用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="简单对比git pull和git pull --rebase的使用">
 <meta property="og:url" content="https://ronesam.com/work/git/rebase/index.html">
 <meta property="og:site_name" content="全栈开发之旅">
-<meta property="og:description" content="使用下面的关系区别这两个操作：git pull = git fetch + git mergegit pull –rebase = git fetch + git rebase 散尽浮华简单对比git pull和git pull --rebase的使用">
+<meta property="og:description" content="使用下面的关系区别这两个操作：  git pull = git fetch + git merge git pull –rebase = git fetch + git rebase  散尽浮华简单对比git pull和git pull --rebase的使用">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ronesam.com/work/git/rebase/1.png">
 <meta property="og:image" content="https://ronesam.com/work/git/rebase/2.png">
 <meta property="og:image" content="https://ronesam.com/work/git/rebase/3.png">
 <meta property="og:image" content="https://ronesam.com/work/git/rebase/4.png">
-<meta property="og:updated_time" content="2018-12-14T01:52:19.736Z">
+<meta property="og:updated_time" content="2018-12-28T04:35:56.847Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简单对比git pull和git pull --rebase的使用">
-<meta name="twitter:description" content="使用下面的关系区别这两个操作：git pull = git fetch + git mergegit pull –rebase = git fetch + git rebase 散尽浮华简单对比git pull和git pull --rebase的使用">
-<meta name="twitter:image" content="https://ronesam.com/work/git/rebase/1.png"><link rel="icon" type="image/x-icon" href="/zero/img/favicon.ico"/><link rel="stylesheet" href="/vendor/bootstrap/3.3.5/css/bootstrap.min.css"><link rel="stylesheet" href="/vendor/font-awesome/4.4.0/css/font-awesome.min.css"><link rel="stylesheet" href="/vendor/remodal/1.0.5/remodal.min.css"><link rel="stylesheet" href="/vendor/remodal/1.0.5/remodal-default-theme.min.css"><link rel="stylesheet" href="/vendor/gitment/0.0.3/default.css"><link rel="stylesheet" href="/zero/css/style.css"><script src="/vendor/jquery/2.1.4/jquery.min.js"></script></head><body><div class="wrapper"><header id="header"><div class="title"><h1><a href="/">全栈开发之旅</a></h1><p class="fa fa-angellist"><a href="/">学以致用, 刻意练习, 知行合一</a></p></div><nav class="nav"><ul><li><a href="/work/summary/">Work</a></li><li><a href="/think/summary/">Think</a></li><li><a href="/about/summary/">关于</a></li></ul><div class="clearfix"></div></nav><div class="clearfix"></div></header><div class="content"><article class="post"><header><div class="icon"></div><a href="/work/git/rebase/"><time datetime="2018-12-14T01:24:15.000Z">2018-12-14</time></a><h1 class="title">简单对比git pull和git pull --rebase的使用</h1></header><div class="entry"><blockquote><p>使用下面的关系区别这两个操作：<br>git pull = git fetch + git merge<br>git pull –rebase = git fetch + git rebase</p>
+<meta name="twitter:description" content="使用下面的关系区别这两个操作：  git pull = git fetch + git merge git pull –rebase = git fetch + git rebase  散尽浮华简单对比git pull和git pull --rebase的使用">
+<meta name="twitter:image" content="https://ronesam.com/work/git/rebase/1.png"><link rel="icon" type="image/x-icon" href="/zero/img/favicon.ico"/><link rel="stylesheet" href="/vendor/bootstrap/3.3.5/css/bootstrap.min.css"><link rel="stylesheet" href="/vendor/font-awesome/4.4.0/css/font-awesome.min.css"><link rel="stylesheet" href="/vendor/remodal/1.0.5/remodal.min.css"><link rel="stylesheet" href="/vendor/remodal/1.0.5/remodal-default-theme.min.css"><link rel="stylesheet" href="/vendor/gitment/0.0.3/default.css"><link rel="stylesheet" href="/zero/css/style.css"><script src="/vendor/jquery/2.1.4/jquery.min.js"></script></head><body><div class="wrapper"><header id="header"><div class="title"><h1><a href="/">全栈开发之旅</a></h1><p class="fa fa-angellist"><a href="/">学以致用, 刻意练习, 知行合一</a></p></div><nav class="nav"><ul><li><a href="/work/summary/">Work</a></li><li><a href="/think/summary/">Think</a></li><li><a href="/about/summary/">关于</a></li></ul><div class="clearfix"></div></nav><div class="clearfix"></div></header><div class="content"><article class="post"><header><div class="icon"></div><a href="/work/git/rebase/"><time datetime="2018-12-14T01:24:15.000Z">2018-12-14</time></a><h1 class="title">简单对比git pull和git pull --rebase的使用</h1></header><div class="entry"><blockquote><p>使用下面的关系区别这两个操作：</p>
+<ul>
+<li>git pull = git fetch + git merge</li>
+<li>git pull –rebase = git fetch + git rebase</li>
+</ul>
 <footer><strong>散尽浮华</strong><cite><a href="http://www.cnblogs.com/kevingrace/p/5896706.html" target="_blank" rel="external">简单对比git pull和git pull --rebase的使用</a></cite></footer></blockquote>
 <a id="more"></a>
 <p>现在来看看<code>git merge</code>和<code>git rebase</code>的区别。</p>
