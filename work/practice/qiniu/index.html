@@ -6,11 +6,11 @@
 <meta property="og:description" content="Github Pages 解析慢得不行，于是使用 Coding.net 作为替代方案。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://static.ronesam.com/work/practice/qiniu/default.png">
-<meta property="og:updated_time" content="2019-02-23T09:23:31.314Z">
+<meta property="og:updated_time" content="2019-02-23T09:29:09.605Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用七牛云作为博客空间">
 <meta name="twitter:description" content="Github Pages 解析慢得不行，于是使用 Coding.net 作为替代方案。">
-<meta name="twitter:image" content="https://static.ronesam.com/work/practice/qiniu/default.png"><link rel="icon" type="image/x-icon" href="//static.ronesam.com/zero/img/favicon.ico"><link rel="stylesheet" href="//static.ronesam.com/vendor/bootstrap/3.3.5/css/bootstrap.min.css"><link rel="stylesheet" href="//static.ronesam.com/vendor/font-awesome/4.4.0/css/font-awesome.min.css"><link rel="stylesheet" href="//static.ronesam.com/vendor/remodal/1.0.5/remodal.min.css"><link rel="stylesheet" href="//static.ronesam.com/vendor/remodal/1.0.5/remodal-default-theme.min.css"><link rel="stylesheet" href="//static.ronesam.com/vendor/gitment/0.0.3/default.css"><link rel="stylesheet" href="//static.ronesam.com/zero/css/style.css"><script src="//static.ronesam.com/vendor/jquery/2.1.4/jquery.min.js"></script></head><body><div class="wrapper"><header id="header"><div class="title"><h1><a href="/">全栈开发之旅</a></h1><p class="fa fa-angellist"><a href="/">学以致用, 刻意练习, 知行合一</a></p></div><nav class="nav"><ul><li><a href="/work/summary/">Work</a></li><li><a href="/think/summary/">Think</a></li><li><a href="/about/summary/">关于</a></li></ul><div class="clearfix"></div></nav><div class="clearfix"></div></header><div class="content"><article class="post"><header><div class="icon"></div><a href="/work/practice/qiniu/"><time datetime="2019-02-23T09:05:00.000Z">2019-02-23</time></a><h1 class="title">使用七牛云作为博客空间</h1></header><div class="entry"><blockquote><p>Github Pages 解析慢得不行，于是使用 Coding.net 作为替代方案。</p>
+<meta name="twitter:image" content="https://static.ronesam.com/work/practice/qiniu/default.png"><link rel="icon" type="image/x-icon" href="//static.ronesam.com/zero/img/favicon.ico"><link rel="stylesheet" href="//static.ronesam.com/vendor/bootstrap/3.3.5/css/bootstrap.min.css"><link rel="stylesheet" href="//static.ronesam.com/vendor/font-awesome/4.4.0/css/font-awesome.min.css"><link rel="stylesheet" href="//static.ronesam.com/vendor/remodal/1.0.5/remodal.min.css"><link rel="stylesheet" href="//static.ronesam.com/vendor/remodal/1.0.5/remodal-default-theme.min.css"><link rel="stylesheet" href="//static.ronesam.com/vendor/gitment/0.0.3/default.css"><!--如果文章中有图片（除画廊外），则载入fancybox特效相关样式--><link rel="stylesheet" href="//static.ronesam.com/vendor/fancybox/2.1.5/jquery.fancybox.min.css"><link rel="stylesheet" href="//static.ronesam.com/zero/css/style.css"><script src="//static.ronesam.com/vendor/jquery/2.1.4/jquery.min.js"></script></head><body><div class="wrapper"><header id="header"><div class="title"><h1><a href="/">全栈开发之旅</a></h1><p class="fa fa-angellist"><a href="/">学以致用, 刻意练习, 知行合一</a></p></div><nav class="nav"><ul><li><a href="/work/summary/">Work</a></li><li><a href="/think/summary/">Think</a></li><li><a href="/about/summary/">关于</a></li></ul><div class="clearfix"></div></nav><div class="clearfix"></div></header><div class="content"><article class="post"><header><div class="icon"></div><a href="/work/practice/qiniu/"><time datetime="2019-02-23T09:05:00.000Z">2019-02-23</time></a><h1 class="title">使用七牛云作为博客空间</h1></header><div class="entry"><blockquote><p>Github Pages 解析慢得不行，于是使用 Coding.net 作为替代方案。</p>
 </blockquote>
 <a id="more"></a>
 <p>然而 Coding.net 被腾讯云收购之后，居然比 Github Pages 还慢了……</p>
@@ -29,4 +29,17 @@
     client_secret: '58f7addd3ab01d3109d9d77e3bba651e0f8a9ba7',
   },
 });
-gitment.render('comment');</script></body></html>
+gitment.render('comment');</script><!--如果文章中有图片（除画廊外），则载入fancybox特效相关代码--><script src="//static.ronesam.com/vendor/fancybox/2.1.5/jquery.fancybox.min.js"></script><script>//给所有的图片打上标识，供fancybox（除了明确表示非fancybox）调用
+$('.entry').each(function(i) {
+  $(this).find('img:not([class*="no-fancybox"])').each(function () {
+    var alt = this.alt;
+    if(alt) {
+      $(this).after('<span class="caption">' + alt + '</span>');
+    }
+    if($(this).parent('a').length === 0) {
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery' + i + '" />');
+    }
+  });
+});
+//启动fancybox
+$('.fancybox').fancybox();</script></body></html>
